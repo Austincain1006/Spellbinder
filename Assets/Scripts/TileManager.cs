@@ -3,8 +3,9 @@ using UnityEngine.Tilemaps;
 
 public class TileManager : MonoBehaviour
 {
-    [SerializeField] private float width, height;
+    [SerializeField] private int width, height;
     [SerializeField] private Tile tilePrefab;
+    [SerializeField] private Camera cameraReference;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -24,6 +25,8 @@ public class TileManager : MonoBehaviour
                 spawnedTile.initialize(isOffset);
             }
         }
+
+        cameraReference.transform.position = new Vector3(width/2f -0.5f, height/2f - 0.5f, -10f);
     }
 }
 

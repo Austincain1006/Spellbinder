@@ -372,6 +372,7 @@ MonoBehaviour:
   width: 10
   height: 10
   tilePrefab: {fileID: 69930996461767668, guid: a7c2f43c519caad469bbf8591e7f1d44, type: 3}
+  cameraReference: {fileID: 519420031}
 --- !u!4 &1363816143
 Transform:
   m_ObjectHideFlags: 0
