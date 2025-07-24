@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 939aff649823c684e997135d5affaa4d
+guid: c293d1afd7320864db3a0bf0d45d4410
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8614357371282603126
-    second: MagicTemplate_0
+      213: -211513017710735067
+    second: MagicWater_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MagicTemplate_0
+      name: MagicWater_0
       rect:
         serializedVersion: 2
         x: 0
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a83ce649c97a37880800000000000000
-      internalID: -8614357371282603126
+      spriteID: 5211bf1f70e801df0800000000000000
+      internalID: -211513017710735067
       vertices: []
       indices: 
       edges: []

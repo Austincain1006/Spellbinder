@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 6aaaee2972e6dba4d922107689efbaf1
+guid: 2b1d4090eb827624ba85d30be6aedbac
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -9016793313983630964
-    second: FireMagic_0
+      213: 1238104756984841130
+    second: MagicSpace_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: FireMagic_0
+      name: MagicSpace_0
       rect:
         serializedVersion: 2
-        x: 3
-        y: 2
-        width: 250
-        height: 250
+        x: 0
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c8173e2014aedd280800000000000000
-      internalID: -9016793313983630964
+      spriteID: aa38dca77b1ae2110800000000000000
+      internalID: 1238104756984841130
       vertices: []
       indices: 
       edges: []
