@@ -1,0 +1,5 @@
+Make the Magic Puzzle System
+
+1. Make a Square Grid
+2. Make Primal Magic 
+3. Create Magic Connections
