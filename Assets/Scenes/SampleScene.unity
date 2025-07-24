@@ -387,6 +387,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &1679774867 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 7647742774258276887, guid: a7c2f43c519caad469bbf8591e7f1d44, type: 3}
+  m_PrefabInstance: {fileID: 6122833942991148902}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6122833942991148902
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -395,6 +400,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 69930996461767668, guid: a7c2f43c519caad469bbf8591e7f1d44, type: 3}
+      propertyPath: renderer
+      value: 
+      objectReference: {fileID: 1679774867}
+    - target: {fileID: 69930996461767668, guid: a7c2f43c519caad469bbf8591e7f1d44, type: 3}
+      propertyPath: baseColor.b
+      value: 0.25882354
+      objectReference: {fileID: 0}
+    - target: {fileID: 69930996461767668, guid: a7c2f43c519caad469bbf8591e7f1d44, type: 3}
+      propertyPath: baseColor.g
+      value: 0.7921569
+      objectReference: {fileID: 0}
+    - target: {fileID: 69930996461767668, guid: a7c2f43c519caad469bbf8591e7f1d44, type: 3}
+      propertyPath: baseColor.r
+      value: 0.90588236
+      objectReference: {fileID: 0}
+    - target: {fileID: 69930996461767668, guid: a7c2f43c519caad469bbf8591e7f1d44, type: 3}
+      propertyPath: accentColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 69930996461767668, guid: a7c2f43c519caad469bbf8591e7f1d44, type: 3}
+      propertyPath: accentColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 69930996461767668, guid: a7c2f43c519caad469bbf8591e7f1d44, type: 3}
+      propertyPath: accentColor.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5890831093764737234, guid: a7c2f43c519caad469bbf8591e7f1d44, type: 3}
       propertyPath: m_LocalPosition.x
       value: -17.58
