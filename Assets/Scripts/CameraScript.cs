@@ -4,11 +4,16 @@ public class CameraScript : MonoBehaviour
 {
     [SerializeField] private Camera cam;
     private Vector3 dragOrigin;
+    public bool isEnabled = true;
 
     // Update is called once per frame
     void Update()
     {
-        panCamera();
+        if (isEnabled)
+        {
+            panCamera();
+        }
+        
     }
 
     private void panCamera()

@@ -5,6 +5,8 @@ public class Tile : MonoBehaviour
     [SerializeField] private Color baseColor, accentColor;
     [SerializeField] private SpriteRenderer myRenderer;
     [SerializeField] private GameObject highlight;
+    [SerializeField] private TileManager tileManager;
+    private bool isHighlighted;
     
 
     private bool updateColor = false;
@@ -18,6 +20,11 @@ public class Tile : MonoBehaviour
     }
 
 
+    void Start()
+    {
+        tileManager = GetComponentInParent<TileManager>();
+    }
+
     void Update()
     {
         myRenderer.color = (updateColor) ? accentColor : baseColor;
@@ -25,14 +32,25 @@ public class Tile : MonoBehaviour
 
     void OnMouseEnter()
     {
+        UpdateHighlight(true);
         //Debug.Log("Enter!");
         highlight.SetActive(true);
     }
 
     void OnMouseExit()
     {
+        UpdateHighlight(false);
         //Debug.Log("Exit!");
         highlight.SetActive(false);
+    }
+
+    void UpdateHighlight(bool highlight)
+    {
+        this.isHighlighted = highlight;
+        if (highlight)
+        {
+            tileManager.updateHighlightedTile(name);
+        }
     }
 
     void OnMouseDown()
