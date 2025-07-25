@@ -37,7 +37,7 @@ public class TileManager : MonoBehaviour
 
     public void MagicButtonPressed()
     {
-        Debug.Log("Click!");
+        //Debug.Log("Click!");
     }
 }
 
