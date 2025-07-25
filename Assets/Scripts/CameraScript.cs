@@ -2,15 +2,29 @@ using UnityEngine;
 
 public class CameraScript : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    [SerializeField] private Camera cam;
+    private Vector3 dragOrigin;
 
     // Update is called once per frame
     void Update()
     {
-        
+        panCamera();
+    }
+
+    private void panCamera()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            dragOrigin = cam.ScreenToWorldPoint(Input.mousePosition);
+        }
+
+        if (Input.GetMouseButton(0))
+        {
+            Vector3 difference = dragOrigin - cam.ScreenToWorldPoint(Input.mousePosition);
+
+            //print("origin " + dragOrigin + " newPosition " + cam.ScreenToWorldPoint(Input.mousePosition) + " =difference" + difference);
+
+            cam.transform.position += difference;
+        }
     }
 }
