@@ -19,7 +19,7 @@ public class TileManager : MonoBehaviour
         {
             for (int y = 0; y < height; y++)
             {
-                var spawnedTile = Instantiate(tilePrefab, new Vector2(x, y), Quaternion.identity);
+                var spawnedTile = Instantiate(tilePrefab, new Vector2(x, y), Quaternion.identity, this.transform);
                 spawnedTile.name = $"Tile {x} {y}";
                 var isOffset = (x + y) % 2 == 1;
                 spawnedTile.initialize(isOffset);
