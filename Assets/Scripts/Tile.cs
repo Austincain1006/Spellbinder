@@ -25,25 +25,50 @@ public class Tile : MonoBehaviour
     void Update()
     {
         myRenderer.color = (updateColor) ? accentColor : baseColor;
+
+        
+    }
+
+    void OnMouseOver()
+    {
+        if (Input.GetMouseButtonDown(1))
+        {
+            OnMouseDown();  // hacky bugfix for RMB not working
+        }
     }
 
     void OnMouseEnter()
     {
         
-        //Debug.Log("Enter!");
         highlight.SetActive(true);
+        
+        
     }
 
     void OnMouseExit()
     {
-        
-        //Debug.Log("Exit!");
         highlight.SetActive(false);
     }
 
     void OnMouseDown()
     {
-        magicIcon.GetComponent<SpriteRenderer>().sprite = tileManager.selectedSprite;
-        tileManager.ClearMouseFollower();
+        Sprite selectedSprite = tileManager.selectedSprite;
+        Debug.Log("CLICK");
+
+        if (Input.GetMouseButtonDown(1))        // Clear Tile if Player clicks RMB
+        {
+            Debug.Log("RMB");
+
+            magicIcon.sprite = tileManager.emptySprite;
+            
+            tileManager.ClearMouseFollower();
+        }
+        else if (Input.GetMouseButtonDown(0) && selectedSprite != tileManager.emptySprite)   // Place Tile if Player clicks LMB
+        {
+            magicIcon.GetComponent<SpriteRenderer>().sprite = selectedSprite;
+            tileManager.ClearMouseFollower();
+            Debug.Log("LMB");
+        }
+        
     }
 }

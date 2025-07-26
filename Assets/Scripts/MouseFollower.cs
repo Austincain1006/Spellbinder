@@ -20,10 +20,13 @@ public class MouseFollower : MonoBehaviour
     {
         PlaceFollowerOntoMouse();
 
-        if (Input.GetMouseButtonDown(1) || Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))
         {
             Clear();
         }
+
+
+        
     }
 
     // Change Magic Icon
@@ -45,6 +48,12 @@ public class MouseFollower : MonoBehaviour
         mousePos = Input.mousePosition;
         mousePos = cam.ScreenToWorldPoint(mousePos);
         transform.position = new Vector3(mousePos.x, mousePos.y, this.transform.position.z);
+    }
+
+
+    public Sprite GetSprite()
+    {
+        return sprite;
     }
 
 }

@@ -7,7 +7,7 @@ public class TileManager : MonoBehaviour
     [SerializeField] private Tile tilePrefab;
     [SerializeField] private Camera cameraReference;
     [SerializeField] private MouseFollower mouseFollower;
-    [SerializeField] private Sprite emptySprite;
+    [SerializeField] public Sprite emptySprite;
     public Sprite selectedSprite;
     public string selectedMagic;
 
@@ -47,9 +47,14 @@ public class TileManager : MonoBehaviour
     // Changes Selected Magic Type 
     public void UpdateSelectedMagic(Sprite icon, string name)
     {
-        Debug.Log($"Icon ref = {icon.name}  &  Name of Button = {name}");
+        //Debug.Log($"Icon ref = {icon.name}  &  Name of Button = {name}");
         selectedSprite = icon;
         selectedMagic = name;
+    }
+
+    public bool HasMagic()
+    {
+        return mouseFollower.GetSprite() != emptySprite;
     }
 }
 
