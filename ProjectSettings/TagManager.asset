@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - TileTag
+  - LineTag
   layers:
   - Default
   - TransparentFX

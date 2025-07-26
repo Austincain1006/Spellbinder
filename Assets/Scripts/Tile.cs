@@ -9,6 +9,7 @@ public class Tile : MonoBehaviour
     [SerializeField] private TileManager tileManager;
     [SerializeField] private SpriteRenderer magicIcon;
     private List<Tile> neighbors;
+    private Line[] lines;
     private bool updateColor = false;
 
     // Used by Tilemanager to set initial conditions of Tile
@@ -20,9 +21,12 @@ public class Tile : MonoBehaviour
 
     void Start()
     {
+        lines = GetComponentsInChildren<Line>();
+        //Debug.Log($"{lines} is null isnt it; but what about {lines[7]} and {lines[6]}");
         tileManager = GetComponentInParent<TileManager>();
         neighbors = new List<Tile>();
         getNeighbors();
+        connectRight();
     }
 
     void Update()
@@ -97,5 +101,18 @@ public class Tile : MonoBehaviour
         }
         return result;
     }
+
+    void connectRight()
+    {
+        if (neighbors.Count > 0)
+        {
+            Debug.Log($"{neighbors[0]} exists?");
+            Debug.Log($"{lines[0]} exists?");
+            lines[0].ConnectLine(this.transform.position, neighbors[0].transform.position);
+        }
+        
+    }
+
+    
 
 }
