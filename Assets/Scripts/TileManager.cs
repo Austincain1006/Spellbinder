@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -8,12 +9,14 @@ public class TileManager : MonoBehaviour
     [SerializeField] private Camera cameraReference;
     [SerializeField] private MouseFollower mouseFollower;
     [SerializeField] public Sprite emptySprite;
+    public List<Tile> tiles;
     public Sprite selectedSprite;
     public string selectedMagic;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        tiles = new List<Tile>();
         GenerateGrid();
     }
 
@@ -29,6 +32,7 @@ public class TileManager : MonoBehaviour
                 spawnedTile.name = $"Tile {x} {y}";
                 var isOffset = (x + y) % 2 == 1;
                 spawnedTile.initialize(isOffset);
+                tiles.Add(spawnedTile);
             }
         }
 

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Tile : MonoBehaviour
@@ -7,6 +8,7 @@ public class Tile : MonoBehaviour
     [SerializeField] private GameObject highlight;
     [SerializeField] private TileManager tileManager;
     [SerializeField] private SpriteRenderer magicIcon;
+    private List<Tile> neighbors;
     private bool updateColor = false;
 
 
@@ -19,14 +21,15 @@ public class Tile : MonoBehaviour
 
     void Start()
     {
+
         tileManager = GetComponentInParent<TileManager>();
+        neighbors = new List<Tile>();
+        getNeighbors();
     }
 
     void Update()
     {
         myRenderer.color = (updateColor) ? accentColor : baseColor;
-
-        
     }
 
     void OnMouseOver()
@@ -39,10 +42,7 @@ public class Tile : MonoBehaviour
 
     void OnMouseEnter()
     {
-        
         highlight.SetActive(true);
-        
-        
     }
 
     void OnMouseExit()
@@ -53,22 +53,50 @@ public class Tile : MonoBehaviour
     void OnMouseDown()
     {
         Sprite selectedSprite = tileManager.selectedSprite;
-        Debug.Log("CLICK");
+
 
         if (Input.GetMouseButtonDown(1))        // Clear Tile if Player clicks RMB
         {
-            Debug.Log("RMB");
-
             magicIcon.sprite = tileManager.emptySprite;
-            
             tileManager.ClearMouseFollower();
         }
         else if (Input.GetMouseButtonDown(0) && selectedSprite != tileManager.emptySprite)   // Place Tile if Player clicks LMB
         {
             magicIcon.GetComponent<SpriteRenderer>().sprite = selectedSprite;
             tileManager.ClearMouseFollower();
-            Debug.Log("LMB");
         }
-        
+
+    }
+
+    // Populate neighbors with list of all nearby Tiles
+    void getNeighbors()
+    {
+        foreach (var n in tileManager.tiles)
+        {
+            // Do not include self in Neighbors
+            if (n == this)
+            {
+                continue;
+            }
+
+            float distance = (this.transform.position - n.transform.position).magnitude;
+            if (distance < 1.5)
+            {
+                this.neighbors.Add(n);
+            }
+        }
+
+        //Debug.Log($"Tile {this.name}'s neighbors are {printList(neighbors)}");
+    }
+
+    // Debug Function to print neighbors
+    string printList(List<Tile> l)
+    {
+        string result = "";
+        foreach (var x in l)
+        {
+            result += x.name + ", ";
+        }
+        return result;
     }
 }

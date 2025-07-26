@@ -188,7 +188,7 @@ GameObject:
   - component: {fileID: 6760478745381968784}
   m_Layer: 0
   m_Name: Tile
-  m_TagString: Untagged
+  m_TagString: TileTag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -283,6 +283,7 @@ MonoBehaviour:
   highlight: {fileID: 6316114295672169043}
   tileManager: {fileID: 0}
   magicIcon: {fileID: 8995558607527064157}
+  neighborDetector: {fileID: 0}
 --- !u!61 &6760478745381968784
 BoxCollider2D:
   m_ObjectHideFlags: 0
