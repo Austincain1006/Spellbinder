@@ -16,6 +16,7 @@ public class CameraScript : MonoBehaviour
         
     }
 
+    // Move Camera when Player Clicks and Drags Mouse
     private void panCamera()
     {
         if (Input.GetMouseButtonDown(0))
@@ -26,9 +27,6 @@ public class CameraScript : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             Vector3 difference = dragOrigin - cam.ScreenToWorldPoint(Input.mousePosition);
-
-            //print("origin " + dragOrigin + " newPosition " + cam.ScreenToWorldPoint(Input.mousePosition) + " =difference" + difference);
-
             cam.transform.position += difference;
         }
     }

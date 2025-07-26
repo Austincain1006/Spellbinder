@@ -4640,8 +4640,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab0cf20afba1f7d40801552cab5c7be3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 10
-  height: 10
+  width: 12
+  height: 8
   tilePrefab: {fileID: 69930996461767668, guid: a7c2f43c519caad469bbf8591e7f1d44, type: 3}
   cameraReference: {fileID: 519420031}
   mouseFollower: {fileID: 1660549440}

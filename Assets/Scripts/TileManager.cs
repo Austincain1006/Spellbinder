@@ -8,7 +8,6 @@ public class TileManager : MonoBehaviour
     [SerializeField] private Camera cameraReference;
     [SerializeField] private MouseFollower mouseFollower;
     [SerializeField] private Sprite emptySprite;
-    
     public Sprite selectedSprite;
     public string selectedMagic;
 
@@ -20,8 +19,10 @@ public class TileManager : MonoBehaviour
 
     void GenerateGrid()
     {
+        // Generate Rows
         for (int x = 0; x < width; x++)
         {
+            // Generate Columns
             for (int y = 0; y < height; y++)
             {
                 var spawnedTile = Instantiate(tilePrefab, new Vector2(x, y), Quaternion.identity, this.transform);
@@ -31,18 +32,19 @@ public class TileManager : MonoBehaviour
             }
         }
 
+        // Center Camera onto Grid
         cameraReference.transform.position = new Vector3(width / 2f - 0.5f, height / 2f - 0.5f, -10f);
     }
 
-
+    // Unselects the currently Selected Magic Type
     public void ClearMouseFollower()
     {
-        Debug.Log("Tilemanger runs");
         mouseFollower.Clear();
         selectedMagic = "empty";
         selectedSprite = emptySprite;
     }
 
+    // Changes Selected Magic Type 
     public void UpdateSelectedMagic(Sprite icon, string name)
     {
         Debug.Log($"Icon ref = {icon.name}  &  Name of Button = {name}");
