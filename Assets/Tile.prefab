@@ -283,7 +283,7 @@ MonoBehaviour:
   highlight: {fileID: 6316114295672169043}
   tileManager: {fileID: 0}
   magicIcon: {fileID: 8995558607527064157}
-  neighborDetector: {fileID: 0}
+  lineController: {fileID: 0}
 --- !u!61 &6760478745381968784
 BoxCollider2D:
   m_ObjectHideFlags: 0

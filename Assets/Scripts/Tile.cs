@@ -11,7 +11,6 @@ public class Tile : MonoBehaviour
     private List<Tile> neighbors;
     private bool updateColor = false;
 
-
     // Used by Tilemanager to set initial conditions of Tile
     public void initialize(bool isOffset)
     {
@@ -21,7 +20,6 @@ public class Tile : MonoBehaviour
 
     void Start()
     {
-
         tileManager = GetComponentInParent<TileManager>();
         neighbors = new List<Tile>();
         getNeighbors();
@@ -99,4 +97,5 @@ public class Tile : MonoBehaviour
         }
         return result;
     }
+
 }
