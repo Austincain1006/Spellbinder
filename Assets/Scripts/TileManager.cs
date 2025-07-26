@@ -6,7 +6,11 @@ public class TileManager : MonoBehaviour
     [SerializeField] private int width, height;
     [SerializeField] private Tile tilePrefab;
     [SerializeField] private Camera cameraReference;
-    private Tile highlightedTile;
+    [SerializeField] private MouseFollower mouseFollower;
+    [SerializeField] private Sprite emptySprite;
+    
+    public Sprite selectedSprite;
+    public string selectedMagic;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -30,14 +34,20 @@ public class TileManager : MonoBehaviour
         cameraReference.transform.position = new Vector3(width / 2f - 0.5f, height / 2f - 0.5f, -10f);
     }
 
-    public void updateHighlightedTile(string name)
-    {
 
+    public void ClearMouseFollower()
+    {
+        Debug.Log("Tilemanger runs");
+        mouseFollower.Clear();
+        selectedMagic = "empty";
+        selectedSprite = emptySprite;
     }
 
-    public void MagicButtonPressed()
+    public void UpdateSelectedMagic(Sprite icon, string name)
     {
-        //Debug.Log("Click!");
+        Debug.Log($"Icon ref = {icon.name}  &  Name of Button = {name}");
+        selectedSprite = icon;
+        selectedMagic = name;
     }
 }
 

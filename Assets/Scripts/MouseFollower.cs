@@ -22,7 +22,7 @@ public class MouseFollower : MonoBehaviour
         mousePos = cam.ScreenToWorldPoint(mousePos);
         transform.position = new Vector3(mousePos.x, mousePos.y, this.transform.position.z);
 
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1) || Input.GetMouseButtonDown(0))
         {
             ChangeSprite(emptySprite);
         }
@@ -33,4 +33,10 @@ public class MouseFollower : MonoBehaviour
         sprite = s;
         GetComponent<SpriteRenderer>().sprite = s;
     }
+
+    public void Clear()
+    {
+        ChangeSprite(emptySprite);
+    }
+
 }

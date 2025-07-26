@@ -771,6 +771,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseFollower: {fileID: 1660549440}
+  tileManager: {fileID: 1363816142}
 --- !u!1 &229257668
 GameObject:
   m_ObjectHideFlags: 0
@@ -4643,6 +4644,10 @@ MonoBehaviour:
   height: 10
   tilePrefab: {fileID: 69930996461767668, guid: a7c2f43c519caad469bbf8591e7f1d44, type: 3}
   cameraReference: {fileID: 519420031}
+  mouseFollower: {fileID: 1660549440}
+  emptySprite: {fileID: -8527568592950175283, guid: 27f000c5cf7333a418c52005184f8d4e, type: 3}
+  selectedSprite: {fileID: -8527568592950175283, guid: 27f000c5cf7333a418c52005184f8d4e, type: 3}
+  selectedMagic: empty
 --- !u!4 &1363816143
 Transform:
   m_ObjectHideFlags: 0

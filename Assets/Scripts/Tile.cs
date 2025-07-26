@@ -6,7 +6,9 @@ public class Tile : MonoBehaviour
     [SerializeField] private SpriteRenderer myRenderer;
     [SerializeField] private GameObject highlight;
     [SerializeField] private TileManager tileManager;
+    [SerializeField] private SpriteRenderer magicIcon;
     private bool isHighlighted;
+    
     
 
     private bool updateColor = false;
@@ -47,14 +49,15 @@ public class Tile : MonoBehaviour
     void UpdateHighlight(bool highlight)
     {
         this.isHighlighted = highlight;
-        if (highlight)
-        {
-            tileManager.updateHighlightedTile(name);
-        }
+        
     }
 
     void OnMouseDown()
     {
         //Debug.Log($"clicked on {name}!");
+
+        //GetComponent<SpriteRenderer>().sprite = tileManager.selectedSprite;
+        magicIcon.GetComponent<SpriteRenderer>().sprite = tileManager.selectedSprite;
+        tileManager.ClearMouseFollower();
     }
 }
