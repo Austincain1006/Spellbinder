@@ -62,14 +62,23 @@ public class Tile : MonoBehaviour
         {
             magicIcon.sprite = tileManager.emptySprite;
             tileManager.ClearMouseFollower();
+            // Break line connections when erasing nodes
+            if (tileManager.doneGenerating)
+            {
+                foreach (var n in neighbors)
+                {
+                    n.updateTile();
+                }
+            }
         }
         else if (Input.GetMouseButtonDown(0) && selectedSprite != tileManager.emptySprite)   // Place Tile if Player clicks LMB
         {
             magicIcon.GetComponent<SpriteRenderer>().sprite = selectedSprite;
             tileManager.ClearMouseFollower();
-            connectNeighbors();
+
         }
 
+        connectNeighbors();
     }
 
     // Populate neighbors with list of all nearby Tiles
@@ -110,25 +119,21 @@ public class Tile : MonoBehaviour
         int i = 0;
         foreach (var n in neighbors)
         {
-            if (i > 7)
+            lines[i].Clear();
+
+            if (i > 3)
             {
                 break;
             }
 
-            /*
-            if (n.magicIcon.sprite.name != "empty_0")
-            {
-                Debug.Log($"{n}");
-                lines[i].ConnectLine(this.transform.position, n.transform.position);
-            }
-            */
-            
+
+
             if (isMagicEqual(this.magicIcon.sprite.name, n.magicIcon.sprite.name))
             {
                 Debug.Log($"Comparing {this.magicIcon.sprite.name} to {n.magicIcon.sprite.name}");
                 lines[i].ConnectLine(this.transform.position, n.transform.position);
             }
-    
+
             i++;
         }
 
@@ -197,11 +202,36 @@ public class Tile : MonoBehaviour
                 return "EA";
             case "MagicRain_0":
                 return "AW";
+            case "Magic Air_0":
+                return "AA";
+            case "MagicChaos_0":
+                return "CC";
+            case "MagicEarth_0":
+                return "EE";
+            case "MagicFire_0":
+                return "FF";
+            case "MagicOrder_0":
+                return "OO";
+            case "MagicWater_0":
+                return "WW";
             default:
                 Debug.LogError($"DECOMPOSE MAGIC FOR {s} IS FUCKED");
                 return null;
-        }
+        }//end switch
 
+    }// decomposeMagic
+
+    void clearLines()
+    {
+        foreach (var l in lines)
+        {
+            l.Clear();
+        }
     }
 
+    void updateTile()
+    {
+        connectNeighbors();
+    }
+    
 }

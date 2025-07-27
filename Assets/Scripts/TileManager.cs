@@ -12,12 +12,19 @@ public class TileManager : MonoBehaviour
     public List<Tile> tiles;
     public Sprite selectedSprite;
     public string selectedMagic;
+    public bool doneGenerating;
+
+    void Awake()
+    {
+        doneGenerating = false;
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         tiles = new List<Tile>();
         GenerateGrid();
+        
     }
 
     void GenerateGrid()
@@ -35,7 +42,7 @@ public class TileManager : MonoBehaviour
                 tiles.Add(spawnedTile);
             }
         }
-
+        doneGenerating = true;
         // Center Camera onto Grid
         cameraReference.transform.position = new Vector3(width / 2f - 0.5f, height / 2f - 0.5f, -10f);
     }
@@ -60,6 +67,9 @@ public class TileManager : MonoBehaviour
     {
         return mouseFollower.GetSprite() != emptySprite;
     }
+
+
+
 }
 
 
