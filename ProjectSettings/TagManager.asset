@@ -7,6 +7,7 @@ TagManager:
   - TileTag
   - LineTag
   - InspectorTag
+  - MagicButtonTag
   layers:
   - Default
   - TransparentFX

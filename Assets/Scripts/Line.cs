@@ -16,7 +16,7 @@ public class Line : MonoBehaviour
 
     public void ConnectLine(Vector3 start, Vector3 end)
     {
-        Debug.Log($"Connecting {start} and {end}");
+        //Debug.Log($"Connecting {start} and {end}");
         start = new Vector3(start.x, start.y, -5);
         end = new Vector3(end.x, end.y, -5);
 

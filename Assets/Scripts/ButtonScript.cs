@@ -1,5 +1,6 @@
 using System;
 using Microsoft.Unity.VisualStudio.Editor;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -9,9 +10,12 @@ public class ButtonScript : MonoBehaviour
 {
     private MagicInspector magicInspector;
     private UnityEngine.UI.Image magicImage;
+    private TextMeshProUGUI textObject;
 
     void Start()
     {
+        textObject = GetComponentInChildren<TextMeshProUGUI>();
+        Debug.Log($"TEXTOBJECT IS {textObject}");
         magicInspector = GameObject.FindGameObjectWithTag("InspectorTag").GetComponent<MagicInspector>();
         magicImage = GetComponent<UnityEngine.UI.Image>();
         Debug.Log(magicInspector);
@@ -26,5 +30,10 @@ public class ButtonScript : MonoBehaviour
     public void OnMouseLeaveButton()
     {
         //Debug.Log($"Mouse left button {this.name}!");
+    }
+
+    public void changeText(string s)
+    {
+        textObject.text = s;
     }
 }
