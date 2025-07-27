@@ -7,18 +7,17 @@ public class UserInterface : MonoBehaviour
     [SerializeField] public MagicBoard magicBoard;
     [SerializeField] public BuyMenu buyMenu;
     [SerializeField] public MouseFollower mouseFollower;
-    
+    [SerializeField] private GameObject winScreen;
+
 
     void Start()
     {
         SetWinButtonVisible(false);
         ToggleBuyMenu();
+        HideWinScreen();
     }
 
-    public void DisplayWinScreen()
-    {
-        Debug.Log($"CONGRATULATIONS, YOU WON! :D");
-    }
+    
 
     public void SetWinButtonVisible(bool b)
     {
@@ -31,5 +30,14 @@ public class UserInterface : MonoBehaviour
         print("Show me the buy menu!");
     }
 
-    
+    public void ShowWinScreen()
+    {
+        winScreen.SetActive(true);
+    }
+
+    public void HideWinScreen()
+    {
+        winScreen.SetActive(false);
+    }
+
 }

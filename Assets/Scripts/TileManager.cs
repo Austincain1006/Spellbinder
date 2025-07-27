@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
 
@@ -36,7 +37,7 @@ public class TileManager : MonoBehaviour
         tiles = new List<Tile>();
         objectives = new List<Tile>();
         GenerateGrid(randIntInRange(minSize, maxSize), randIntInRange(minSize, maxSize));
-
+        ui.HideWinScreen();
     }
 
     void GenerateGrid(int width, int height)
@@ -109,6 +110,7 @@ public class TileManager : MonoBehaviour
     public void WinGame()
     {
         ui.SetWinButtonVisible(true);
+
     }
 
     public void RevokeWinStatus()
@@ -136,7 +138,7 @@ public class TileManager : MonoBehaviour
     public void addCoins(int amount)
     {
         coins += amount;
-
+        ui.buyMenu.setCoinCounter(coins.ToString());
     }
 
     public bool BuyMagic(string magicType, int amount)
@@ -152,6 +154,29 @@ public class TileManager : MonoBehaviour
         {
             return false;
         }
+    }
+
+
+    public void restart()
+    {
+        foreach (Tile t in tiles)
+        {
+            Destroy(t);
+        }
+        tiles = new List<Tile>();
+        objectives = new List<Tile>();
+        print("Making new spell");
+        doneGenerating = false;
+        numObjectives = randIntInRange(3, 6);
+        GenerateGrid(randIntInRange(minSize, maxSize), randIntInRange(minSize, maxSize));
+        ui.HideWinScreen();
+        ui.SetWinButtonVisible(false);
+        addCoins(10);
+    }
+
+    public void hackRestart()
+    {
+        SceneManager.LoadScene(0);
     }
 }
 

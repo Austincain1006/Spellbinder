@@ -233,7 +233,7 @@ public class Tile : MonoBehaviour
             case "MagicMovement_0":
                 return "OA";
             case "MagicSand_0":
-                return "EA";
+                return "EC";
             case "MagicSpace_0":
                 return "WC";
             case "MagicSteam_0":
