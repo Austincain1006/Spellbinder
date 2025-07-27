@@ -771,6 +771,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseColor: {r: 0.9372549, g: 0.8392157, b: 0.35686275, a: 1}
   accentColor: {r: 0.8509804, g: 0.65882355, b: 0.21568628, a: 1}
+  objectiveColor: {r: 0, g: 1, b: 0.08543229, a: 1}
   myRenderer: {fileID: 7647742774258276887}
   highlight: {fileID: 6316114295672169043}
   tileManager: {fileID: 0}
@@ -780,6 +781,7 @@ MonoBehaviour:
   - {fileID: 1961308608116184115}
   - {fileID: 4319292726942526986}
   - {fileID: 4177210469297847780}
+  isObjective: 0
 --- !u!61 &6760478745381968784
 BoxCollider2D:
   m_ObjectHideFlags: 0

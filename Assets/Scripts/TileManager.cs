@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -9,7 +10,11 @@ public class TileManager : MonoBehaviour
     [SerializeField] private Camera cameraReference;
     [SerializeField] private MouseFollower mouseFollower;
     [SerializeField] public Sprite emptySprite;
+    [SerializeField] public Sprite[] primalMagics;
+    
+    private int numObjectives;
     public List<Tile> tiles;
+    private List<Tile> objectives;
     public Sprite selectedSprite;
     public string selectedMagic;
     public bool doneGenerating;
@@ -22,9 +27,11 @@ public class TileManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        numObjectives = 6;
         tiles = new List<Tile>();
+        objectives = new List<Tile>();
         GenerateGrid();
-        
+
     }
 
     void GenerateGrid()
@@ -38,12 +45,13 @@ public class TileManager : MonoBehaviour
                 var spawnedTile = Instantiate(tilePrefab, new Vector2(x, y), Quaternion.identity, this.transform);
                 spawnedTile.name = $"Tile {x} {y}";
                 var isOffset = (x + y) % 2 == 1;
-                spawnedTile.initialize(isOffset);
+                spawnedTile.initialize(isOffset, false);    // sets offset AND objective status
                 tiles.Add(spawnedTile);
             }
         }
+        makeObjectives();
         doneGenerating = true;
-        // Center Camera onto Grid
+        
         cameraReference.transform.position = new Vector3(width / 2f - 0.5f, height / 2f - 0.5f, -10f);
     }
 
@@ -68,6 +76,23 @@ public class TileManager : MonoBehaviour
         return mouseFollower.GetSprite() != emptySprite;
     }
 
+    // Designate Special Tiles as Objectives
+    void makeObjectives()
+    {
+        for (int i = 0; i < numObjectives; i++)
+        {
+            var randTile = tiles[randIntInRange(0, tiles.Count - 1)];
+            randTile.becomeObjective( primalMagics[randIntInRange(1,6)]);
+            objectives.Add(randTile);
+            Debug.Log("TileManager wants an objective!");
+        }
+    }
+
+    private int randIntInRange(int min, int max)
+    {
+        System.Random r = new System.Random();
+        return r.Next(min, max + 1);
+    }
 
 
 }

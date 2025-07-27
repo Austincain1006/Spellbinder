@@ -4,24 +4,36 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
-    [SerializeField] private Color baseColor, accentColor;
+    [SerializeField] private Color baseColor, accentColor, objectiveColor;
     [SerializeField] private SpriteRenderer myRenderer;
     [SerializeField] private GameObject highlight;
     [SerializeField] private TileManager tileManager;
     [SerializeField] private SpriteRenderer magicIcon;
     private List<Tile> neighbors;
+    
     [SerializeField] private Line[] lines;
     private bool updateColor = false;
+    public bool isObjective;
 
     // Used by Tilemanager to set initial conditions of Tile
-    public void initialize(bool isOffset)
+    public void initialize(bool isOffset, bool isObjective)
     {
+        this.isObjective = isObjective;
         updateColor = isOffset;
-        myRenderer.color = (isOffset) ? accentColor : baseColor;
+        
+        if (isObjective)
+        {
+            myRenderer.color = objectiveColor;
+        }
+        else
+        {
+            myRenderer.color = (isOffset) ? accentColor : baseColor;
+        }
     }
 
     void Start()
     {
+        
         //lines = GetComponentsInChildren<Line>();
         //Debug.Log($"{lines} is null isnt it; but what about {lines[7]} and {lines[6]}");
         tileManager = GetComponentInParent<TileManager>();
@@ -57,6 +69,10 @@ public class Tile : MonoBehaviour
     {
         Sprite selectedSprite = tileManager.selectedSprite;
 
+        if (isObjective)
+        {
+            return;
+        }
 
         if (Input.GetMouseButtonDown(1))        // Clear Tile if Player clicks RMB
         {
@@ -215,18 +231,22 @@ public class Tile : MonoBehaviour
             case "MagicWater_0":
                 return "WW";
             default:
-                Debug.LogError($"DECOMPOSE MAGIC FOR {s} IS FUCKED");
+                Debug.LogError($"DECOMPOSE MAGIC FOR {s} IS NONEXISTANT");
                 return null;
         }//end switch
 
     }// decomposeMagic
 
-    void clearLines()
+    public void becomeObjective(Sprite s)
     {
-        foreach (var l in lines)
-        {
-            l.Clear();
-        }
+        this.isObjective = true;
+        baseColor = objectiveColor;
+        accentColor = objectiveColor;
+        myRenderer.color = objectiveColor;
+        Debug.Log("I am now an objective!");
+
+        magicIcon.GetComponent<SpriteRenderer>().sprite = s;
+
     }
 
     void updateTile()

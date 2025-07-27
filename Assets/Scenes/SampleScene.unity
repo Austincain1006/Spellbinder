@@ -4646,9 +4646,17 @@ MonoBehaviour:
   cameraReference: {fileID: 519420031}
   mouseFollower: {fileID: 1660549440}
   emptySprite: {fileID: -8527568592950175283, guid: 27f000c5cf7333a418c52005184f8d4e, type: 3}
+  primalMagics:
+  - {fileID: 5369889482697959894, guid: 9ee69c3d07102e944afc9c3f55cd59af, type: 3}
+  - {fileID: 3686625516858919463, guid: e7aae501ec09f1f48b3d3809935da8de, type: 3}
+  - {fileID: 4375254551818511882, guid: 9488179a946fb294ea20d5986bf3d11f, type: 3}
+  - {fileID: -8595264369491779183, guid: 38525fd883d3b58448618a59b737bbdf, type: 3}
+  - {fileID: -6705141324350680691, guid: d610d0f20a72c3d4b993a403e1b70e4a, type: 3}
+  - {fileID: -211513017710735067, guid: c293d1afd7320864db3a0bf0d45d4410, type: 3}
   tiles: []
   selectedSprite: {fileID: -8527568592950175283, guid: 27f000c5cf7333a418c52005184f8d4e, type: 3}
   selectedMagic: empty
+  doneGenerating: 0
 --- !u!4 &1363816143
 Transform:
   m_ObjectHideFlags: 0
