@@ -13,6 +13,7 @@ public class MagicBoard : MonoBehaviour
 
     void Start()
     {
+        magicButtons = new ButtonScript[16];
         magicButtons = GetComponentsInChildren<ButtonScript>();
         foreach (var b in magicButtons)
         {
@@ -31,5 +32,8 @@ public class MagicBoard : MonoBehaviour
         tileManager.UpdateSelectedMagic(selectedSprite, pressedButton.name);
     }
 
-
+    public ButtonScript[] getButtons()
+    {
+        return magicButtons;
+    }
 }

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.UI;
 
 public class TileManager : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class TileManager : MonoBehaviour
     [SerializeField] public Sprite emptySprite;
     [SerializeField] public Sprite[] primalMagics;
     [SerializeField] public UserInterface ui;
+    public Dictionary<string, int> inventory;
     public List<Tile> tiles;
     public List<Tile> objectives;
     public Sprite selectedSprite;
@@ -26,6 +28,7 @@ public class TileManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        PopulateStartingInventory();
         numObjectives = randIntInRange(3, 6);
         tiles = new List<Tile>();
         objectives = new List<Tile>();
@@ -108,6 +111,16 @@ public class TileManager : MonoBehaviour
     public void RevokeWinStatus()
     {
         ui.SetWinButtonVisible(false);
+    }
+
+    private void PopulateStartingInventory()
+    {
+        inventory = new Dictionary<string, int>();
+        foreach (ButtonScript b in ui.magicBoard.getButtons())
+        {
+            inventory.Add(b.name, 5);
+            print($"DICTIONARY: {b.name} maps to {inventory[b.name]}");
+        }
     }
 
 }

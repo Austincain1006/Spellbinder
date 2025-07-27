@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class UserInterface : MonoBehaviour
 {
     [SerializeField] private GameObject winButton;
+    [SerializeField] public MagicBoard magicBoard;
 
     void Start()
     {
