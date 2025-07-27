@@ -1,30 +1,26 @@
-using System;
-using Microsoft.Unity.VisualStudio.Editor;
+
 using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.UI;
-using UnityEngine.UIElements;
 
 public class ButtonScript : MonoBehaviour
 {
     private MagicInspector magicInspector;
-    public UnityEngine.UI.Image magicImage;
-    private TextMeshProUGUI textObject;
+    public Sprite magicImage;
+    public TextMeshProUGUI textObject;
 
     void Start()
     {
-        textObject = GetComponentInChildren<TextMeshProUGUI>();
-        Debug.Log($"TEXTOBJECT IS {textObject}");
+        //textObject = GetComponentInChildren<TextMeshProUGUI>();
+        //Debug.Log($"TEXTOBJECT IS {textObject}");
         magicInspector = GameObject.FindGameObjectWithTag("InspectorTag").GetComponent<MagicInspector>();
-        magicImage = GetComponent<UnityEngine.UI.Image>();
-        Debug.Log(magicInspector);
+        //magicImage = GetComponent<UnityEngine.UI.Image>();
+        //Debug.Log(magicInspector);
     }
 
     public void OnMouseOverButton()
     {
         //Debug.Log($"Mouse over button {this.name}!");
-        magicInspector.SetProduct(magicImage.sprite);
+        magicInspector.SetProduct(magicImage);
     }
 
     public void OnMouseLeaveButton()

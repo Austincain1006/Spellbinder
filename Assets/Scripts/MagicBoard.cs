@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -14,13 +13,19 @@ public class MagicBoard : MonoBehaviour
 
     void Start()
     {
-        magicButtons = new Dictionary<string, ButtonScript>();
 
+        magicButtons = new Dictionary<string, ButtonScript>();
+        print($"magicButton is {magicButtons}");
         foreach (var b in GetComponentsInChildren<ButtonScript>())
         {
-            magicButtons.Add(b.magicImage.sprite.name, b);
-            print($"Added {b} to Magic Buttons dict");
-            b.changeText("5");
+            if (b != null)
+            {
+                print($"b in magicButtons is {b}, trying to access {b.magicImage.name}");
+                magicButtons.Add(b.magicImage.name, b);
+                print($"Added {b} to Magic Buttons dict");
+                b.changeText("5");
+            }
+            
         }
     }
 

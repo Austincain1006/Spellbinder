@@ -1,6 +1,4 @@
 using System.Collections.Generic;
-using Unity.Collections;
-using UnityEditor.U2D.Aseprite;
 using UnityEngine;
 
 public class Tile : MonoBehaviour

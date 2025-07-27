@@ -1,9 +1,7 @@
-using System;
+
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Tilemaps;
-using UnityEngine.UI;
 
 public class TileManager : MonoBehaviour
 {
@@ -120,11 +118,18 @@ public class TileManager : MonoBehaviour
 
     private void PopulateStartingInventory()
     {
+        
         inventory = new Dictionary<string, int>();
+        print($"Inventory is: {inventory}");
         foreach (ButtonScript b in ui.magicBoard.getButtons())
         {
-            inventory.Add(b.magicImage.sprite.name, 5);
-            print($"DICTIONARY: {b.magicImage.sprite.name}   -> maps into {inventory[b.magicImage.sprite.name]}");
+            print($"b in tileManager is : {b}");
+            if (b != null)
+            {
+                inventory.Add(b.magicImage.name, 5);
+                print($"DICTIONARY: {b.magicImage.name}   -> maps into {inventory[b.magicImage.name]}");
+            }
+
         }
     }
 

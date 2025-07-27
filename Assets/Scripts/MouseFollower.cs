@@ -1,5 +1,4 @@
-using Microsoft.Unity.VisualStudio.Editor;
-using Mono.Cecil;
+
 using UnityEngine;
 
 public class MouseFollower : MonoBehaviour
