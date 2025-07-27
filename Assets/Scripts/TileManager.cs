@@ -48,6 +48,7 @@ public class TileManager : MonoBehaviour
             }
         }
         makeObjectives();
+        Debug.Log($"Number obj = {numObjectives}");
         doneGenerating = true;
         tiles[0].clearLines();
 

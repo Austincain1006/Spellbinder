@@ -289,8 +289,10 @@ public class Tile : MonoBehaviour
 
         foreach (Tile n in startingTile.neighbors)
         {
-            if (!visited.Contains(n) && n.magicIcon.sprite.name != "empty_0")
+            if (!visited.Contains(n) && n.magicIcon.sprite.name != "empty_0" &&
+            isMagicEqual(startingTile.magicIcon.sprite.name, n.magicIcon.sprite.name))
             {
+                isMagicEqual(startingTile.magicIcon.sprite.name, n.magicIcon.sprite.name);
                 DFSVisit(visited, startingTile);
             }
 
@@ -306,8 +308,10 @@ public class Tile : MonoBehaviour
         visited.Push(currentTile);
         foreach (Tile n in currentTile.neighbors)
         {
-            if (!visited.Contains(n) && n.magicIcon.sprite.name != "empty_0")
+            if (!visited.Contains(n) && n.magicIcon.sprite.name != "empty_0"
+            && isMagicEqual(currentTile.magicIcon.sprite.name, n.magicIcon.sprite.name))
             {
+                
                 DFSVisit(visited, n);
             }
         }
