@@ -11,6 +11,7 @@ public class TileManager : MonoBehaviour
     [SerializeField] private MouseFollower mouseFollower;
     [SerializeField] public Sprite emptySprite;
     [SerializeField] public Sprite[] primalMagics;
+    [SerializeField] public UserInterface ui;
     public List<Tile> tiles;
     public List<Tile> objectives;
     public Sprite selectedSprite;
@@ -94,7 +95,16 @@ public class TileManager : MonoBehaviour
         return r.Next(min, max + 1);
     }
 
-    
+    public void WinGame()
+    {
+        ui.SetWinButtonVisible(true);
+    }
+
+    public void RevokeWinStatus()
+    {
+        ui.SetWinButtonVisible(false);
+    }
+
 }
 
 

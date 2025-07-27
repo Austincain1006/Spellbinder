@@ -87,6 +87,11 @@ public class Tile : MonoBehaviour
                     n.updateTile();
                 }
             }
+            if (!IsAtWinState(this))
+            {
+                tileManager.RevokeWinStatus();
+                Debug.Log("nvm u dont win anymore lol");
+            }
         }
         else if (Input.GetMouseButtonDown(0) && selectedSprite != tileManager.emptySprite)   // Place Tile if Player clicks LMB
         {
@@ -94,6 +99,7 @@ public class Tile : MonoBehaviour
             tileManager.ClearMouseFollower();
             if (IsAtWinState(this))
             {
+                tileManager.WinGame();
                 Debug.Log("HOLY MOLY YOU WON!");
             }
 

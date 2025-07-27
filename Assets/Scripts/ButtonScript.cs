@@ -19,12 +19,12 @@ public class ButtonScript : MonoBehaviour
 
     public void OnMouseOverButton()
     {
-        Debug.Log($"Mouse over button {this.name}!");
+        //Debug.Log($"Mouse over button {this.name}!");
         magicInspector.SetProduct(magicImage.sprite);
     }
 
     public void OnMouseLeaveButton()
     {
-        Debug.Log($"Mouse left button {this.name}!");
+        //Debug.Log($"Mouse left button {this.name}!");
     }
 }
