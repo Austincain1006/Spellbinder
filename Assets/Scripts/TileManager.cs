@@ -19,6 +19,7 @@ public class TileManager : MonoBehaviour
     public Sprite selectedSprite;
     public string selectedMagic;
     public bool doneGenerating;
+    public int coins;
 
     void Awake()
     {
@@ -29,6 +30,7 @@ public class TileManager : MonoBehaviour
     void Start()
     {
         PopulateStartingInventory();
+        coins = 10;
         numObjectives = randIntInRange(3, 6);
         tiles = new List<Tile>();
         objectives = new List<Tile>();
@@ -130,6 +132,11 @@ public class TileManager : MonoBehaviour
         ui.magicBoard.updateButtonText(magicType, inventory[magicType].ToString());
     }
 
+    public void addCoins(int amount)
+    {
+        coins += amount;
+        
+    }
 }
 
 
