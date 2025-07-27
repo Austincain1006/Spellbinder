@@ -66,26 +66,54 @@ public class BuyMenu : MonoBehaviour
 
     public void BuyEarthMagic()
     {
-        primalInventory["MagicEarth_0"] += 1;
-        earthMenuAmount.text = primalInventory["MagicEarth_0"].ToString();
+        if (tileManager.BuyMagic("MagicEarth_0", 1))
+        {
+            primalInventory["MagicEarth_0"] += 1;
+            earthMenuAmount.text = primalInventory["MagicEarth_0"].ToString();
+        }
+        else
+        {
+            Debug.Log("Not enough money!");
+        }
     }
 
     public void BuyFireMagic()
     {
-        primalInventory["MagicFire_0"] += 1;
-        fireMenuAmount.text = primalInventory["MagicFire_0"].ToString();
+        if (tileManager.BuyMagic("MagicFire_0", 1))
+        {
+            primalInventory["MagicFire_0"] += 1;
+            fireMenuAmount.text = primalInventory["MagicFire_0"].ToString();
+        }
+        else
+        {
+            Debug.Log("Not enough money!");
+        }
     }
 
     public void BuyOrderMagic()
     {
-        primalInventory["MagicOrder_0"] += 1;
-        orderMenuAmount.text = primalInventory["MagicOrder_0"].ToString();
+        if (tileManager.BuyMagic("MagicOrder_0", 1))
+        {
+            primalInventory["MagicOrder_0"] += 1;
+            orderMenuAmount.text = primalInventory["MagicOrder_0"].ToString();
+        }
+        else
+        {
+            Debug.Log("Not enough money!");
+        }
     }
 
     public void BuyWaterMagic()
     {
-        primalInventory["MagicWater_0"] += 1;
-        waterMenuAmount.text = primalInventory["MagicWater_0"].ToString();
+        if (tileManager.BuyMagic("waterOrder_0", 1))
+        {
+            primalInventory["waterOrder_0"] += 1;
+            waterMenuAmount.text = primalInventory["waterOrder_0"].ToString();
+        }
+        else
+        {
+            Debug.Log("Not enough money!");
+        }
     }
 
     public void setCoinCounter(string s)
@@ -131,10 +159,13 @@ public class BuyMenu : MonoBehaviour
                 return;
             }
 
-            if (!decrementPrimals(componentA) && !decrementPrimals(componentB))
+            if (primalInventory[componentA.image.sprite.name] <= 0 ||
+            primalInventory[componentA.image.sprite.name] <= 0)
             {
                 return;
             }
+            decrementPrimals(componentA);
+            decrementPrimals(componentB);
 
 
             string filepath = "" + s + ".png";
