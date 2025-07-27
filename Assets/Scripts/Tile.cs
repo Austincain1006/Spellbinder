@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.Collections;
 using UnityEngine;
 
 public class Tile : MonoBehaviour
@@ -114,8 +115,17 @@ public class Tile : MonoBehaviour
                 break;
             }
 
-            if (n.magicIcon.sprite.name != "empty_0") {
+            /*
+            if (n.magicIcon.sprite.name != "empty_0")
+            {
                 Debug.Log($"{n}");
+                lines[i].ConnectLine(this.transform.position, n.transform.position);
+            }
+            */
+            
+            if (isMagicEqual(this.magicIcon.sprite.name, n.magicIcon.sprite.name))
+            {
+                Debug.Log($"Comparing {this.magicIcon.sprite.name} to {n.magicIcon.sprite.name}");
                 lines[i].ConnectLine(this.transform.position, n.transform.position);
             }
     
@@ -123,9 +133,75 @@ public class Tile : MonoBehaviour
         }
 
     }
-    
 
+    bool isMagicEqual(string x, string y)
+    {
+        string X = decomposeMagic(x);
+        string Y = decomposeMagic(y);
 
-    
+        if (X == null || Y == null || x == y)
+        {
+            return false;
+        }
+
+        char a = X[0];
+        char b = X[1];
+        char c = Y[0];
+        char d = Y[1];
+
+        return a == c || a == d || b == c || b == d;
+    }
+
+    // Return the Two primal magics that make up an element
+    string decomposeMagic(string s)
+    {
+        // Order = O
+        // Chaos = C
+        // Fire = F
+        // Water = W
+        // Earth = E
+        // Air = A
+        switch (s)
+        {
+            case "empty_0":
+                return null;
+            case "MagicBalance_0":
+                return "OC";
+            case "MagicCrystal_0":
+                return "OE";
+            case "MagicEarthquake_0":
+                return "EC";
+            case "MagicEnergy_0":
+                return "OF";
+            case "MagicExplosion_0":
+                return "CF";
+            case "MagicIce_0":
+                return "OW";
+            case "MagicLife_0":
+                return "EW";
+            case "MagicMagma_0":
+                return "EF";
+            case "MagicMovement_0":
+                return "OA";
+            case "MagicSand_0":
+                return "EA";
+            case "MagicSpace_0":
+                return "WC";
+            case "MagicSteam_0":
+                return "WF";
+            case "MagicStorm_0":
+                return "AF";
+            case "MagicTornado_0":
+                return "AC";
+            case "MagicErosion_0":
+                return "EA";
+            case "MagicRain_0":
+                return "AW";
+            default:
+                Debug.LogError($"DECOMPOSE MAGIC FOR {s} IS FUCKED");
+                return null;
+        }
+
+    }
 
 }
