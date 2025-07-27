@@ -9,7 +9,7 @@ using UnityEngine.UIElements;
 public class ButtonScript : MonoBehaviour
 {
     private MagicInspector magicInspector;
-    private UnityEngine.UI.Image magicImage;
+    public UnityEngine.UI.Image magicImage;
     private TextMeshProUGUI textObject;
 
     void Start()

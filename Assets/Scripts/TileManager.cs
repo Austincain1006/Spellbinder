@@ -118,9 +118,16 @@ public class TileManager : MonoBehaviour
         inventory = new Dictionary<string, int>();
         foreach (ButtonScript b in ui.magicBoard.getButtons())
         {
-            inventory.Add(b.name, 5);
-            print($"DICTIONARY: {b.name} maps to {inventory[b.name]}");
+            inventory.Add(b.magicImage.sprite.name, 5);
+            print($"DICTIONARY: {b.magicImage.sprite.name}   -> maps into {inventory[b.magicImage.sprite.name]}");
         }
+    }
+
+    public void addMagic(string magicType, int amount)
+    {
+        print($"Adding {amount} to {magicType}");
+        inventory[magicType] += amount;
+        ui.magicBoard.updateButtonText(magicType, inventory[magicType].ToString());
     }
 
 }

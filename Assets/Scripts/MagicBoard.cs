@@ -8,16 +8,18 @@ public class MagicBoard : MonoBehaviour
 {
     [SerializeField] private MouseFollower mouseFollower;
     [SerializeField] private TileManager tileManager;
-    private ButtonScript[] magicButtons;
+    //private ButtonScript[] magicButtons;
+    public Dictionary<string, ButtonScript> magicButtons;
 
 
     void Start()
     {
-        magicButtons = new ButtonScript[16];
-        magicButtons = GetComponentsInChildren<ButtonScript>();
-        foreach (var b in magicButtons)
+        magicButtons = new Dictionary<string, ButtonScript>();
+
+        foreach (var b in GetComponentsInChildren<ButtonScript>())
         {
-            print($"I have this: {b.name}");
+            magicButtons.Add(b.magicImage.sprite.name, b);
+            print($"Added {b} to Magic Buttons dict");
             b.changeText("5");
         }
     }
@@ -34,6 +36,11 @@ public class MagicBoard : MonoBehaviour
 
     public ButtonScript[] getButtons()
     {
-        return magicButtons;
+        return GetComponentsInChildren<ButtonScript>();
+    }
+
+    public void updateButtonText(string buttonName, string value)
+    {
+        magicButtons[buttonName].changeText(value);
     }
 }

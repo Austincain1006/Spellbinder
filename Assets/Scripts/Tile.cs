@@ -77,8 +77,15 @@ public class Tile : MonoBehaviour
 
         if (Input.GetMouseButtonDown(1))        // Clear Tile if Player clicks RMB
         {
+            string prevSprite = magicIcon.sprite.name;
             magicIcon.sprite = tileManager.emptySprite;
             tileManager.ClearMouseFollower();
+            // Give Element Back when Removing
+            if (prevSprite != tileManager.emptySprite.name)
+            {
+                tileManager.addMagic(prevSprite, 1);
+            }
+
             // Break line connections when erasing nodes
             if (tileManager.doneGenerating)
             {
@@ -87,11 +94,14 @@ public class Tile : MonoBehaviour
                     n.updateTile();
                 }
             }
+
+            // Check if removing Elements breaks Win Condition
             if (!IsAtWinState(this))
             {
                 tileManager.RevokeWinStatus();
                 Debug.Log("nvm u dont win anymore lol");
             }
+
         }
         else if (Input.GetMouseButtonDown(0) && selectedSprite != tileManager.emptySprite)   // Place Tile if Player clicks LMB
         {
