@@ -9,7 +9,7 @@ public class Tile : MonoBehaviour
     [SerializeField] private TileManager tileManager;
     [SerializeField] private SpriteRenderer magicIcon;
     private List<Tile> neighbors;
-    private Line[] lines;
+    [SerializeField] private Line[] lines;
     private bool updateColor = false;
 
     // Used by Tilemanager to set initial conditions of Tile
@@ -21,12 +21,12 @@ public class Tile : MonoBehaviour
 
     void Start()
     {
-        lines = GetComponentsInChildren<Line>();
+        //lines = GetComponentsInChildren<Line>();
         //Debug.Log($"{lines} is null isnt it; but what about {lines[7]} and {lines[6]}");
         tileManager = GetComponentInParent<TileManager>();
         neighbors = new List<Tile>();
         getNeighbors();
-        connectRight();
+        connectNeighbors();
     }
 
     void Update()
@@ -66,6 +66,7 @@ public class Tile : MonoBehaviour
         {
             magicIcon.GetComponent<SpriteRenderer>().sprite = selectedSprite;
             tileManager.ClearMouseFollower();
+            connectNeighbors();
         }
 
     }
@@ -82,7 +83,7 @@ public class Tile : MonoBehaviour
             }
 
             float distance = (this.transform.position - n.transform.position).magnitude;
-            if (distance < 1.5)
+            if (distance < 1.1f && distance != 0f)
             {
                 this.neighbors.Add(n);
             }
@@ -102,16 +103,28 @@ public class Tile : MonoBehaviour
         return result;
     }
 
-    void connectRight()
+    void connectNeighbors()
     {
-        if (neighbors.Count > 0)
+
+        int i = 0;
+        foreach (var n in neighbors)
         {
-            Debug.Log($"{neighbors[0]} exists?");
-            Debug.Log($"{lines[0]} exists?");
-            lines[0].ConnectLine(this.transform.position, neighbors[0].transform.position);
+            if (i > 7)
+            {
+                break;
+            }
+
+            if (n.magicIcon.sprite.name != "empty_0") {
+                Debug.Log($"{n}");
+                lines[i].ConnectLine(this.transform.position, n.transform.position);
+            }
+    
+            i++;
         }
-        
+
     }
+    
+
 
     
 

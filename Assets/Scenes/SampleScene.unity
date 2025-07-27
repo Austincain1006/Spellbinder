@@ -4646,6 +4646,7 @@ MonoBehaviour:
   cameraReference: {fileID: 519420031}
   mouseFollower: {fileID: 1660549440}
   emptySprite: {fileID: -8527568592950175283, guid: 27f000c5cf7333a418c52005184f8d4e, type: 3}
+  tiles: []
   selectedSprite: {fileID: -8527568592950175283, guid: 27f000c5cf7333a418c52005184f8d4e, type: 3}
   selectedMagic: empty
 --- !u!4 &1363816143

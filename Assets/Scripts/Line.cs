@@ -4,20 +4,26 @@ public class Line : MonoBehaviour
 {
     LineRenderer lineRenderer;
 
-    void Start()
+    void Awake()
     {
         lineRenderer = GetComponent<LineRenderer>();
-        Debug.Log($"{lineRenderer} is probably null");
+    }
+
+    void Start()
+    {
+        
     }
 
     public void ConnectLine(Vector3 start, Vector3 end)
     {
         Debug.Log($"Connecting {start} and {end}");
+        start = new Vector3(start.x, start.y, -5);
+        end = new Vector3(end.x, end.y, -5);
 
         lineRenderer.positionCount = 2;
 
         lineRenderer.SetPosition(0, start);
-        lineRenderer.SetPosition(0, end);
+        lineRenderer.SetPosition(1, end);
     }
 
     public void Clear()

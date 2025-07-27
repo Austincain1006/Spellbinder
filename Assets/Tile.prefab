@@ -176,7 +176,7 @@ LineRenderer:
     shadowBias: 0.5
     generateLightingData: 0
   m_MaskInteraction: 0
-  m_UseWorldSpace: 0
+  m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
 --- !u!114 &8522238683043525475
@@ -328,7 +328,7 @@ LineRenderer:
     shadowBias: 0.5
     generateLightingData: 0
   m_MaskInteraction: 0
-  m_UseWorldSpace: 0
+  m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
 --- !u!114 &5817878725326751367
@@ -567,7 +567,7 @@ LineRenderer:
     shadowBias: 0.5
     generateLightingData: 0
   m_MaskInteraction: 0
-  m_UseWorldSpace: 0
+  m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
 --- !u!114 &7784999687981478192
@@ -719,7 +719,7 @@ LineRenderer:
     shadowBias: 0.5
     generateLightingData: 0
   m_MaskInteraction: 0
-  m_UseWorldSpace: 0
+  m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
 --- !u!114 &4319292726942526986
@@ -958,7 +958,7 @@ LineRenderer:
     shadowBias: 0.5
     generateLightingData: 0
   m_MaskInteraction: 0
-  m_UseWorldSpace: 0
+  m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
 --- !u!114 &1961308608116184115
@@ -1083,6 +1083,15 @@ MonoBehaviour:
   highlight: {fileID: 6316114295672169043}
   tileManager: {fileID: 0}
   magicIcon: {fileID: 8995558607527064157}
+  lines:
+  - {fileID: 7784999687981478192}
+  - {fileID: 1961308608116184115}
+  - {fileID: 4319292726942526986}
+  - {fileID: 4177210469297847780}
+  - {fileID: 8522238683043525475}
+  - {fileID: 3973887437819223612}
+  - {fileID: 2606287735363743205}
+  - {fileID: 5817878725326751367}
 --- !u!61 &6760478745381968784
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1266,7 +1275,7 @@ LineRenderer:
     shadowBias: 0.5
     generateLightingData: 0
   m_MaskInteraction: 0
-  m_UseWorldSpace: 0
+  m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
 --- !u!114 &4177210469297847780
@@ -1418,7 +1427,7 @@ LineRenderer:
     shadowBias: 0.5
     generateLightingData: 0
   m_MaskInteraction: 0
-  m_UseWorldSpace: 0
+  m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
 --- !u!114 &3973887437819223612
@@ -1570,7 +1579,7 @@ LineRenderer:
     shadowBias: 0.5
     generateLightingData: 0
   m_MaskInteraction: 0
-  m_UseWorldSpace: 0
+  m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
 --- !u!114 &2606287735363743205
