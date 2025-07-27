@@ -11,10 +11,10 @@ public class TileManager : MonoBehaviour
     [SerializeField] private MouseFollower mouseFollower;
     [SerializeField] public Sprite emptySprite;
     [SerializeField] public Sprite[] primalMagics;
-    
+
     private int numObjectives;
     public List<Tile> tiles;
-    private List<Tile> objectives;
+    public List<Tile> objectives;
     public Sprite selectedSprite;
     public string selectedMagic;
     public bool doneGenerating;
@@ -51,7 +51,7 @@ public class TileManager : MonoBehaviour
         }
         makeObjectives();
         doneGenerating = true;
-        
+
         cameraReference.transform.position = new Vector3(width / 2f - 0.5f, height / 2f - 0.5f, -10f);
     }
 
@@ -82,9 +82,9 @@ public class TileManager : MonoBehaviour
         for (int i = 0; i < numObjectives; i++)
         {
             var randTile = tiles[randIntInRange(0, tiles.Count - 1)];
-            randTile.becomeObjective( primalMagics[randIntInRange(0,5)]);
+            randTile.becomeObjective(primalMagics[randIntInRange(0, 5)]);
             objectives.Add(randTile);
-            Debug.Log("TileManager wants an objective!");
+            //Debug.Log("TileManager wants an objective!");
         }
     }
 
@@ -94,7 +94,7 @@ public class TileManager : MonoBehaviour
         return r.Next(min, max + 1);
     }
 
-
+    
 }
 
 

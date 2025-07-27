@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Unity.Collections;
+using UnityEditor.U2D.Aseprite;
 using UnityEngine;
 
 public class Tile : MonoBehaviour
@@ -10,7 +11,7 @@ public class Tile : MonoBehaviour
     [SerializeField] private TileManager tileManager;
     [SerializeField] private SpriteRenderer magicIcon;
     private List<Tile> neighbors;
-    
+
     [SerializeField] private Line[] lines;
     private bool updateColor = false;
     public bool isObjective;
@@ -20,7 +21,7 @@ public class Tile : MonoBehaviour
     {
         this.isObjective = isObjective;
         updateColor = isOffset;
-        
+
         if (isObjective)
         {
             myRenderer.color = objectiveColor;
@@ -33,7 +34,7 @@ public class Tile : MonoBehaviour
 
     void Start()
     {
-        
+
         //lines = GetComponentsInChildren<Line>();
         //Debug.Log($"{lines} is null isnt it; but what about {lines[7]} and {lines[6]}");
         tileManager = GetComponentInParent<TileManager>();
@@ -91,6 +92,10 @@ public class Tile : MonoBehaviour
         {
             magicIcon.GetComponent<SpriteRenderer>().sprite = selectedSprite;
             tileManager.ClearMouseFollower();
+            if (IsAtWinState(this))
+            {
+                Debug.Log("HOLY MOLY YOU WON!");
+            }
 
         }
 
@@ -146,7 +151,7 @@ public class Tile : MonoBehaviour
 
             if (isMagicEqual(this.magicIcon.sprite.name, n.magicIcon.sprite.name))
             {
-                Debug.Log($"Comparing {this.magicIcon.sprite.name} to {n.magicIcon.sprite.name}");
+                //Debug.Log($"Comparing {this.magicIcon.sprite.name} to {n.magicIcon.sprite.name}");
                 lines[i].ConnectLine(this.transform.position, n.transform.position);
             }
 
@@ -243,7 +248,7 @@ public class Tile : MonoBehaviour
         baseColor = objectiveColor;
         accentColor = objectiveColor;
         myRenderer.color = objectiveColor;
-        Debug.Log("I am now an objective!");
+        //Debug.Log("I am now an objective!");
 
         magicIcon.GetComponent<SpriteRenderer>().sprite = s;
 
@@ -253,5 +258,72 @@ public class Tile : MonoBehaviour
     {
         connectNeighbors();
     }
-    
+
+
+    // Check if Board in a Win Condition
+    bool IsAtWinState(Tile startingTile)
+    {
+        int objectivesComplete = 0;
+        // Run DFS, check if OBJECTIVE number of is in visited stack
+        foreach (Tile t in DFS(startingTile))
+        {
+            if (t.isObjective)
+            {
+                objectivesComplete++;
+            }
+
+            if (objectivesComplete >= tileManager.objectives.Count)
+            {
+                Debug.Log($"Checking if {objectivesComplete} >= {tileManager.objectives.Count}");
+                return true;
+            }
+
+        }
+
+        return false;
+    }
+
+    Stack<Tile> DFS(Tile startingTile)
+    {
+        Stack<Tile> visited = new Stack<Tile>(); // Visited Nodes
+
+        foreach (Tile n in startingTile.neighbors)
+        {
+            if (!visited.Contains(n) && n.magicIcon.sprite.name != "empty_0")
+            {
+                DFSVisit(visited, startingTile);
+            }
+
+        }
+
+        Debug.Log($"Visited = {visited}");
+        printStack(visited);
+        return visited;
+    }
+
+    void DFSVisit(Stack<Tile> visited, Tile currentTile)
+    {
+        visited.Push(currentTile);
+        foreach (Tile n in currentTile.neighbors)
+        {
+            if (!visited.Contains(n) && n.magicIcon.sprite.name != "empty_0")
+            {
+                DFSVisit(visited, n);
+            }
+        }
+    }
+
+    void printStack(Stack<Tile> s)
+    {
+        int i = 0;
+        string result = "";
+        foreach (Tile t in s)
+        {
+            result += $"{i} : ";
+            result += t.name;
+            result += ",   ";
+            i++;
+        }
+        print(result);
+    }
 }
