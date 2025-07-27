@@ -5,14 +5,12 @@ using UnityEngine.Tilemaps;
 
 public class TileManager : MonoBehaviour
 {
-    [SerializeField] private int width, height;
+    [SerializeField] private int minSize, maxSize, numObjectives;
     [SerializeField] private Tile tilePrefab;
     [SerializeField] private Camera cameraReference;
     [SerializeField] private MouseFollower mouseFollower;
     [SerializeField] public Sprite emptySprite;
     [SerializeField] public Sprite[] primalMagics;
-
-    private int numObjectives;
     public List<Tile> tiles;
     public List<Tile> objectives;
     public Sprite selectedSprite;
@@ -27,14 +25,14 @@ public class TileManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        numObjectives = 6;
+        numObjectives = randIntInRange(3, 6);
         tiles = new List<Tile>();
         objectives = new List<Tile>();
-        GenerateGrid();
+        GenerateGrid(randIntInRange(minSize, maxSize), randIntInRange(minSize, maxSize));
 
     }
 
-    void GenerateGrid()
+    void GenerateGrid(int width, int height)
     {
         // Generate Rows
         for (int x = 0; x < width; x++)
@@ -51,6 +49,7 @@ public class TileManager : MonoBehaviour
         }
         makeObjectives();
         doneGenerating = true;
+        tiles[0].clearLines();
 
         cameraReference.transform.position = new Vector3(width / 2f - 0.5f, height / 2f - 0.5f, -10f);
     }

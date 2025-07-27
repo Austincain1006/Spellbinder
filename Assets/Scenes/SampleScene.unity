@@ -4640,8 +4640,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab0cf20afba1f7d40801552cab5c7be3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 12
-  height: 8
+  minSize: 6
+  maxSize: 10
+  numObjectives: 5
   tilePrefab: {fileID: 69930996461767668, guid: a7c2f43c519caad469bbf8591e7f1d44, type: 3}
   cameraReference: {fileID: 519420031}
   mouseFollower: {fileID: 1660549440}
@@ -4654,6 +4655,7 @@ MonoBehaviour:
   - {fileID: -6705141324350680691, guid: d610d0f20a72c3d4b993a403e1b70e4a, type: 3}
   - {fileID: -211513017710735067, guid: c293d1afd7320864db3a0bf0d45d4410, type: 3}
   tiles: []
+  objectives: []
   selectedSprite: {fileID: -8527568592950175283, guid: 27f000c5cf7333a418c52005184f8d4e, type: 3}
   selectedMagic: empty
   doneGenerating: 0

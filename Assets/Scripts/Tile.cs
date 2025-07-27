@@ -326,4 +326,12 @@ public class Tile : MonoBehaviour
         }
         print(result);
     }
+
+    public void clearLines()
+    {
+        foreach (var l in lines)
+        {
+            l.Clear();
+        }
+    }
 }
