@@ -40,8 +40,6 @@ public class MagicInspector : MonoBehaviour
                 return "OC";
             case "MagicCrystal_0":
                 return "OE";
-            case "MagicEarthquake_0":
-                return "EC";
             case "MagicEnergy_0":
                 return "OF";
             case "MagicExplosion_0":

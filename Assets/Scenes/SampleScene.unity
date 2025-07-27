@@ -5629,7 +5629,7 @@ GameObject:
   - component: {fileID: 1432520834}
   - component: {fileID: 1432520835}
   m_Layer: 5
-  m_Name: EarthquakeMagic
+  m_Name: StormMagic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5732,7 +5732,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -9212493037556271218, guid: 62c987168e02b0646b0564a6f9ad82ab, type: 3}
+  m_Sprite: {fileID: -8994372015343898270, guid: c12629f0a346674438cd9f280f5d4a83, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
