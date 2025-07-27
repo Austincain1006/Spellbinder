@@ -31,6 +31,7 @@ public class TileManager : MonoBehaviour
     {
         PopulateStartingInventory();
         coins = 10;
+        ui.buyMenu.setCoinCounter(coins.ToString());
         numObjectives = randIntInRange(3, 6);
         tiles = new List<Tile>();
         objectives = new List<Tile>();
@@ -135,7 +136,22 @@ public class TileManager : MonoBehaviour
     public void addCoins(int amount)
     {
         coins += amount;
-        
+
+    }
+
+    public bool BuyMagic(string magicType, int amount)
+    {
+
+        if (coins > 0)
+        {
+            coins -= amount;
+            ui.buyMenu.setCoinCounter(coins.ToString());
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }
 

@@ -9,9 +9,11 @@ public class MouseFollower : MonoBehaviour
     [SerializeField] Camera cam;
     public Sprite sprite;
     [SerializeField] private Sprite emptySprite;
+    public Sprite prevSprite;
 
     void Start()
     {
+        prevSprite = emptySprite;
         Clear();
     }
 
@@ -20,8 +22,9 @@ public class MouseFollower : MonoBehaviour
     {
         PlaceFollowerOntoMouse();
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && sprite != emptySprite)
         {
+            prevSprite = sprite;
             Clear();
         }
 
