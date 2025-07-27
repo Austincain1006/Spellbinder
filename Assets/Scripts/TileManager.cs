@@ -82,7 +82,7 @@ public class TileManager : MonoBehaviour
         for (int i = 0; i < numObjectives; i++)
         {
             var randTile = tiles[randIntInRange(0, tiles.Count - 1)];
-            randTile.becomeObjective( primalMagics[randIntInRange(1,6)]);
+            randTile.becomeObjective( primalMagics[randIntInRange(0,5)]);
             objectives.Add(randTile);
             Debug.Log("TileManager wants an objective!");
         }
