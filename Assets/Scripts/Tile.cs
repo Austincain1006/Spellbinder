@@ -298,8 +298,8 @@ public class Tile : MonoBehaviour
 
         }
 
-        Debug.Log($"Visited = {visited}");
-        printStack(visited);
+        //Debug.Log($"Visited = {visited}");
+        //printStack(visited);
         return visited;
     }
 
