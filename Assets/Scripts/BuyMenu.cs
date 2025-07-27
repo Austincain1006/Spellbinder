@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,9 +21,11 @@ public class BuyMenu : MonoBehaviour
     [SerializeField] Button componentA;
     [SerializeField] Button componentB;
     [SerializeField] Button mixingButton;
-    
+    private bool alternator;
+
     void Start()
     {
+        alternator = true;
         primalInventory = new Dictionary<string, int>();
         primalInventory.Add("Magic Air_0", 3);
         primalInventory.Add("MagicChaos_0", 3);
@@ -101,6 +104,8 @@ public class BuyMenu : MonoBehaviour
 
     }
 
+
+
     public void SetComponentB()
     {
         print("Clicked B");
@@ -114,26 +119,64 @@ public class BuyMenu : MonoBehaviour
     public void MixComponents()
     {
         print("Clicked Mix");
-        if (ui.mouseFollower.prevSprite.name != "empty_0")
+
+        if (componentA.image.sprite.name != "empty_0" && componentB.image.sprite.name != "empty_0"
+        && componentB.image.sprite.name != componentA.image.sprite.name)
         {
-
-            mixingButton.image.sprite = ui.mouseFollower.prevSprite;
-
-            if (componentA.image.sprite.name != "empty_0" && componentB.image.sprite.name != "empty_0"
-            && componentB.image.sprite.name != componentA.image.sprite.name)
+            char a = getMagicAbbreviation(componentA.image.sprite.name);
+            char b = getMagicAbbreviation(componentB.image.sprite.name);
+            string s = mixComponents(a, b);
+            if (s == "empty_0")
             {
-                char a = getMagicAbbreviation(componentA.image.sprite.name);
-                char b = getMagicAbbreviation(componentB.image.sprite.name);
-                string s = mixComponents(a, b);
-                string filepath = "Art/" + s + ".png";
-                Debug.Log($"Loading {filepath}");
-                //mixingButton.image.sprite = Resources.Load<Sprite>(filepath);
-                mixingButton.image.sprite = Resources.Load<Sprite>("MagicExplosion_0.png");
-
+                return;
             }
 
+            if (!decrementPrimals(componentA) && !decrementPrimals(componentB))
+            {
+                return;
+            }
+
+
+            string filepath = "" + s + ".png";
+            Debug.Log("Give player +1 element!");
+            tileManager.addMagic(s, 1);
+            Debug.Log($"Loading {filepath}");
+            mixingButton.image.sprite = Resources.Load<Sprite>(filepath);
         }
     }
+
+    private bool decrementPrimals(Button component)
+    {
+        if (primalInventory[component.image.sprite.name] <= 0)
+        {
+            return false;
+        }
+
+        primalInventory[component.image.sprite.name] -= 1;
+        switch (component.image.sprite.name)
+        {
+            case "Magic Air_0":
+                airMenuAmount.text = primalInventory[component.image.sprite.name].ToString();
+                return true;
+            case "MagicChaos_0":
+                chaosMenuAmount.text = primalInventory[component.image.sprite.name].ToString();
+                return true;
+            case "MagicEarth_0":
+                earthMenuAmount.text = primalInventory[component.image.sprite.name].ToString();
+                return true;
+            case "MagicFire_0":
+                fireMenuAmount.text = primalInventory[component.image.sprite.name].ToString();
+                return true;
+            case "MagicOrder_0":
+                orderMenuAmount.text = primalInventory[component.image.sprite.name].ToString();
+                return true;
+            case "MagicWater_0":
+                waterMenuAmount.text = primalInventory[component.image.sprite.name].ToString();
+                return true;
+        }
+        return true;
+    }
+
 
     char getMagicAbbreviation(string s)
     {
@@ -257,31 +300,87 @@ public class BuyMenu : MonoBehaviour
 
     public void setComponentAir()
     {
-        componentA.image.sprite = primalSprites[0];
+        int componentID = 0;
+        if (alternator)
+        {
+            componentA.image.sprite = primalSprites[componentID];
+        }
+        else
+        {
+            componentB.image.sprite = primalSprites[componentID];
+        }
+        alternator = !alternator;
     }
 
     public void setComponentChaos()
     {
-        componentA.image.sprite = primalSprites[1];
+        int componentID = 1;
+        if (alternator)
+        {
+            componentA.image.sprite = primalSprites[componentID];
+        }
+        else
+        {
+            componentB.image.sprite = primalSprites[componentID];
+        }
+        alternator = !alternator;
     }
 
     public void setComponentEarth()
     {
-        componentA.image.sprite = primalSprites[2];
+        int componentID = 2;
+        if (alternator)
+        {
+            componentA.image.sprite = primalSprites[componentID];
+        }
+        else
+        {
+            componentB.image.sprite = primalSprites[componentID];
+        }
+        alternator = !alternator;
     }
 
     public void setComponentFire()
     {
-        componentB.image.sprite = primalSprites[3];
+        int componentID = 3;
+        if (alternator)
+        {
+            componentA.image.sprite = primalSprites[componentID];
+        }
+        else
+        {
+            componentB.image.sprite = primalSprites[componentID];
+        }
+        alternator = !alternator;
     }
 
     public void setComponentOrder()
     {
-        componentB.image.sprite = primalSprites[4];
+        int componentID = 4;
+        if (alternator)
+        {
+            componentA.image.sprite = primalSprites[componentID];
+        }
+        else
+        {
+            componentB.image.sprite = primalSprites[componentID];
+        }
+        alternator = !alternator;
     }
-    
+
     public void setComponentWater()
     {
-        componentB.image.sprite = primalSprites[5];
+        int componentID = 5;
+        if (alternator)
+        {
+            componentA.image.sprite = primalSprites[componentID];
+        }
+        else
+        {
+            componentB.image.sprite = primalSprites[componentID];
+        }
+        alternator = !alternator;
     }
+    
+    
 }
