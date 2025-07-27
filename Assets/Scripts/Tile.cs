@@ -105,6 +105,15 @@ public class Tile : MonoBehaviour
         }
         else if (Input.GetMouseButtonDown(0) && selectedSprite != tileManager.emptySprite)   // Place Tile if Player clicks LMB
         {
+            if (tileManager.inventory[selectedSprite.name] <= 0)
+            {
+                tileManager.ClearMouseFollower();
+                return;
+            }
+            // Remove 1 magic from inventory
+            tileManager.addMagic(selectedSprite.name, -1);
+            
+            
             magicIcon.GetComponent<SpriteRenderer>().sprite = selectedSprite;
             tileManager.ClearMouseFollower();
             if (IsAtWinState(this))
